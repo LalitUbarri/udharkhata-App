@@ -1,0 +1,6 @@
+export const STORAGE_KEYS = {
+  TOKEN: "TOKEN",
+  USER: "USER",
+  LANGUAGE: "LANGUAGE",
+  THEME: "THEME",
+};
