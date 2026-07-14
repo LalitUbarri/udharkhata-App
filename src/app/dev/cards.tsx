@@ -5,8 +5,8 @@ import {
     BaseCard,
     Container,
     Screen
-} from "@/features/components";
-import { Typography } from "@/features/components/common/Typography";
+} from "@/components";
+import { Typography } from "@/components/common/Typography";
 export default function CardDemo() {
   return (
     <Screen scrollable>

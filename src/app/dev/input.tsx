@@ -4,9 +4,9 @@ import {
     BaseInput,
     Container,
     Screen,
-} from "@/features/components";
+} from "@/components";
 
-import { Icon } from "@/features/components/common/Icon";
+import { Icon } from "@/components/common/Icon";
 
 export default function InputDemo() {
   const [name, setName] = useState("");

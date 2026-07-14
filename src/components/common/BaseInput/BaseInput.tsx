@@ -6,7 +6,7 @@ import {
     View,
 } from "react-native";
 
-import { Icon } from "@/features/components/common/Icon";
+import { Icon } from "@/components/common/Icon";
 
 import { styles } from "./styles";
 import { BaseInputProps } from "./types";

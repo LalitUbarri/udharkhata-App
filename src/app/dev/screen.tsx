@@ -1,5 +1,5 @@
-import { Screen } from "@/features/components";
-import { Typography } from "@/features/components/common/Typography";
+import { Screen } from "@/components/common/Screen";
+import { Typography } from "@/components/common/Typography";
 
 export default function ScreenDemo() {
   return (

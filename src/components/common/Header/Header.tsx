@@ -1,4 +1,4 @@
-import { Icon } from "@/features/components/common/Icon";
+import { Icon } from "@/components/common/Icon";
 import { Pressable, Text, View } from "react-native";
 
 import { styles } from "./styles";

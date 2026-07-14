@@ -1,101 +1,81 @@
 import { database } from "../service";
 import { Customer } from "../types";
+import { BaseRepository } from "./BaseRepository";
 
-class CustomerRepository {
+class CustomerRepository extends BaseRepository<Customer> {
+  constructor() {
+    super("customers");
+  }
+
   /**
    * Add Customer
    */
   add(customer: Customer) {
-    return database.run(
-      `
-      INSERT INTO customers
-      (
-        id,
-        name,
-        mobile,
-        address,
-        note,
-        createdAt
-      )
-      VALUES (?, ?, ?, ?, ?, ?)
-      `,
-      [
-        customer.id,
-        customer.name,
-        customer.mobile,
-        customer.address ?? "",
-        customer.note ?? "",
-        customer.createdAt,
-      ]
-    );
-  }
-
-  /**
-   * Get All Customers
-   */
-  getAll(): Customer[] {
-    return database.getAll<Customer>(
-      `
-      SELECT *
-      FROM customers
-      ORDER BY createdAt DESC
-      `
-    );
-  }
-
-  /**
-   * Get Customer By Id
-   */
-  getById(id: string): Customer | null {
-    return database.getFirst<Customer>(
-      `
-      SELECT *
-      FROM customers
-      WHERE id = ?
-      `,
-      [id]
-    );
-  }
+  return database.run(
+    `
+    INSERT INTO customers (
+      id,
+      name,
+      mobile,
+      whatsapp,
+      address,
+      note,
+      openingBalance,
+      balanceType,
+      createdAt,
+      updatedAt
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `,
+    [
+      customer.id,
+      customer.name,
+      customer.mobile,
+      customer.whatsapp ?? "",
+      customer.address ?? "",
+      customer.note ?? "",
+      customer.openingBalance,
+      customer.balanceType,
+      customer.createdAt,
+      customer.updatedAt,
+    ]
+  );
+}
 
   /**
    * Update Customer
    */
   update(customer: Customer) {
-    return database.run(
-      `
-      UPDATE customers
-      SET
-        name = ?,
-        mobile = ?,
-        address = ?,
-        note = ?
-      WHERE id = ?
-      `,
-      [
-        customer.name,
-        customer.mobile,
-        customer.address ?? "",
-        customer.note ?? "",
-        customer.id,
-      ]
-    );
-  }
+  return database.run(
+    `
+    UPDATE customers
+    SET
+      name = ?,
+      mobile = ?,
+      whatsapp = ?,
+      address = ?,
+      note = ?,
+      openingBalance = ?,
+      balanceType = ?,
+      updatedAt = ?
+    WHERE id = ?
+    `,
+    [
+      customer.name,
+      customer.mobile,
+      customer.whatsapp ?? "",
+      customer.address ?? "",
+      customer.note ?? "",
+      customer.openingBalance,
+      customer.balanceType,
+      new Date().toISOString(), // 👈 Automatically update timestamp
+      customer.id,
+    ]
+  );
+}
 
   /**
-   * Delete Customer
-   */
-  delete(id: string) {
-    return database.run(
-      `
-      DELETE FROM customers
-      WHERE id = ?
-      `,
-      [id]
-    );
-  }
-
-  /**
-   * Search Customers
+   * Search Customer
    */
   search(keyword: string): Customer[] {
     return database.getAll<Customer>(
@@ -109,20 +89,6 @@ class CustomerRepository {
       `,
       [`%${keyword}%`, `%${keyword}%`]
     );
-  }
-
-  /**
-   * Total Customers
-   */
-  count(): number {
-    const result = database.getFirst<{ total: number }>(
-      `
-      SELECT COUNT(*) as total
-      FROM customers
-      `
-    );
-
-    return result?.total ?? 0;
   }
 }
 

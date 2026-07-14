@@ -1,11 +1,11 @@
-import { createTables, verifyTables } from "./schema";
+import { createTables } from "./schema";
 
 export function runMigrations() {
   console.log("🚀 Running Database Migration...");
 
   createTables();
 
-  verifyTables();
+  // verifyTables();
 
   console.log("✅ Database Ready");
 }

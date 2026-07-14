@@ -1,6 +1,6 @@
-import { Screen } from "@/features/components";
-import { Header } from "@/features/components/common/Header";
-import { Typography } from '../../features/components/common/Typography';
+import { Screen } from "@/components";
+import { Header } from "@/components/common/Header";
+import { Typography } from '../../components/common/Typography';
 // import Typography  from "@/components/common/Typography";
 
 export default function LoginScreen() {

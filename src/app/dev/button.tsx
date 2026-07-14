@@ -2,8 +2,8 @@ import {
     BaseButton,
     Container,
     Screen,
-} from "@/features/components";
-import { Icon } from "@/features/components/common/Icon";
+} from "@/components";
+import { Icon } from "@/components/common/Icon";
 import { Alert } from "react-native";
 
 export default function ButtonDemo() {

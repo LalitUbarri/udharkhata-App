@@ -1,22 +1,22 @@
 import { Alert } from "react-native";
 
 import {
-    BaseButton,
-    Container,
-    Screen,
-} from "@/features/components";
+  BaseButton,
+  Container,
+  Screen,
+} from "@/components";
 
 import {
-    login,
-    logout,
+  login,
+  logout,
 } from "@/redux/slices/authSlice";
 
 import {
-    useAppDispatch,
-    useAppSelector,
+  useAppDispatch,
+  useAppSelector,
 } from "@/redux";
 
-import { Typography } from "@/features/components/common/Typography";
+import { Typography } from "@/components/common/Typography";
 
 export default function ReduxDemo() {
   const dispatch = useAppDispatch();

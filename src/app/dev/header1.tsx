@@ -4,8 +4,8 @@ import {
     Container,
     Header,
     Screen,
-} from "@/features/components";
-import { Typography } from '@/features/components/common/Typography';
+} from "@/components";
+import { Typography } from '@/components/common/Typography';
 
 export default function HeaderDemo() {
   return (

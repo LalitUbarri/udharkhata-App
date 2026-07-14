@@ -1,14 +1,13 @@
 export interface Customer {
   id: string;
-
   name: string;
-
   mobile: string;
-
+  whatsapp: string;
+  openingBalance: number;
+  balanceType: "GIVE" | "TAKE";
+  updatedAt: string;
   address?: string;
-
   note?: string;
-
   createdAt: string;
 }
 

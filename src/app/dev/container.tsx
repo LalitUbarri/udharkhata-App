@@ -1,6 +1,6 @@
-import { Screen } from "@/features/components";
-import { Container } from "@/features/components/common/Container";
-import { Typography } from "@/features/components/common/Typography";
+import { Screen } from "@/components";
+import { Container } from "@/components/common/Container";
+import { Typography } from "@/components/common/Typography";
 
 export default function ContainerDemo() {
   return (
