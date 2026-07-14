@@ -1,9 +1,75 @@
-import { createSlice } from "@reduxjs/toolkit";
+import type { Customer } from "@/database/types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface CustomerState {
+  customers: Customer[];
+  loading: boolean;
+  selectedCustomer: Customer | null;
+  searchKeyword: string;
+}
+
+const initialState: CustomerState = {
+  customers: [],
+  loading: false,
+  selectedCustomer: null,
+  searchKeyword: "",
+};
 
 const customerSlice = createSlice({
   name: "customers",
-  initialState: [],
-  reducers: {},
+  initialState,
+  reducers: {
+    setCustomers(state, action: PayloadAction<Customer[]>) {
+      state.customers = action.payload;
+    },
+
+    addCustomer(state, action: PayloadAction<Customer>) {
+      state.customers.unshift(action.payload);
+    },
+
+    updateCustomer(state, action: PayloadAction<Customer>) {
+      const index = state.customers.findIndex(
+        (c) => c.id === action.payload.id
+      );
+
+      if (index !== -1) {
+        state.customers[index] = action.payload;
+      }
+    },
+
+    deleteCustomer(state, action: PayloadAction<string>) {
+      state.customers = state.customers.filter(
+        (c) => c.id !== action.payload
+      );
+    },
+
+    selectCustomer(state, action: PayloadAction<Customer | null>) {
+      state.selectedCustomer = action.payload;
+    },
+
+    setSearchKeyword(state, action: PayloadAction<string>) {
+      state.searchKeyword = action.payload;
+    },
+
+    setLoading(state, action: PayloadAction<boolean>) {
+      state.loading = action.payload;
+    },
+
+    clearSelectedCustomer(state) {
+      state.selectedCustomer = null;
+    },
+  },
 });
 
-export default customerSlice.reducer;
+export const {
+  setCustomers,
+  addCustomer,
+  updateCustomer,
+  deleteCustomer,
+  selectCustomer,
+  setSearchKeyword,
+  setLoading,
+  clearSelectedCustomer,
+} = customerSlice.actions;
+
+export default customerSlice.reducer; 
